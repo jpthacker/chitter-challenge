@@ -107,9 +107,9 @@ CREATE TABLE users (
 
 TRUNCATE TABLE users, messages RESTART IDENTITY;
 
-INSERT INTO artists ("name", "genre") VALUES
-('Pixies', 'Rock'),
-('Nina Simone', 'Pop');
+INSERT INTO users ("email", "password", "name", "handle") VALUES
+('jack@makers.com', 'swordfish', 'Jack Thacker', 'thackattacc'),
+('ray@makers.com', 'password123', 'Ray Anderson', 'blackwillow');
 
 INSERT INTO messages ("content", "user_id") VALUES
 ('My first peep', 1),
@@ -132,13 +132,13 @@ TRUNCATE TABLE messages RESTART IDENTITY;
 
 INSERT INTO messages ("content", "user_id") VALUES
 ('My first peep', 1),
-( 'Ed balls', 2);_
+('Ed balls', 2);
 
 ```
 
 ## 5. Create the tables.
 
 ```bash
-psql -h 127.0.0.1 chitter < users_seeds.sql;
-psql -h 127.0.0.1 chitter < messages_seeds.sql;
+psql -h 127.0.0.1 chitter_database < users_seeds.sql;
+psql -h 127.0.0.1 chitter_database < messages_seeds.sql;
 ```
