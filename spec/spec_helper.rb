@@ -1,8 +1,5 @@
 require 'simplecov'
 require 'simplecov-console'
-require 'database_connection'
-
-DatabaseConnection.connect('chitter_database')
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
@@ -10,6 +7,18 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   # SimpleCov::Formatter::HTMLFormatter
 ])
 SimpleCov.start
+
+# very important line to say that tests are run in "test" environment
+ENV["RACK_ENV"] = "test"
+# imports the actual controller file
+require_relative "../app"
+
+require "rspec"
+require "capybara"
+require "capybara/rspec"
+
+# tells Capybara what the app is for the feature tests
+Capybara.app = Chitter
 
 RSpec.configure do |config|
   config.after(:suite) do
