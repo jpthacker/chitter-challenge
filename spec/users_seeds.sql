@@ -14,7 +14,3 @@ TRUNCATE TABLE users, messages RESTART IDENTITY;
 INSERT INTO users ("email", "password", "name", "handle") VALUES
 ('jack@makers.com', 'swordfish', 'Jack Thacker', 'thackattacc'),
 ('ray@makers.com', 'password123', 'Ray Anderson', 'blackwillow');
-
-INSERT INTO messages ("content", "user_id") VALUES
-('My first peep', 1),
-( 'Ed balls', 2);

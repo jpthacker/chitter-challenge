@@ -45,12 +45,12 @@ message (peep), time, content, user, email, password, name, username
 
 | Record                | Properties          |
 | --------------------- | ------------------  |
-| message               | id, content, user_id
+| message               | id, content, timestamp, user_id
 | user                  | id, email, password, name, handle
 
 1. Name of the first table (always plural): `messages` 
 
-    Column names: `id`, `content`, `user_id`
+    Column names: `id`, `content`, `timestamp`, `user_id`
 
 2. Name of the second table (always plural): `users` 
 
@@ -64,6 +64,7 @@ message (peep), time, content, user, email, password, name, username
 Table: messages
 id: SERIAL
 content: text
+timestamp: timestamp
 user_id: int
 
 Table: users
@@ -111,10 +112,6 @@ INSERT INTO users ("email", "password", "name", "handle") VALUES
 ('jack@makers.com', 'swordfish', 'Jack Thacker', 'thackattacc'),
 ('ray@makers.com', 'password123', 'Ray Anderson', 'blackwillow');
 
-INSERT INTO messages ("content", "user_id") VALUES
-('My first peep', 1),
-( 'Ed balls', 2);
-
 -- file: messages_seeds.sql
 
 DROP TABLE IF EXISTS messages; 
@@ -122,6 +119,7 @@ DROP TABLE IF EXISTS messages;
 CREATE TABLE messages (
   id SERIAL PRIMARY KEY,
   content text,
+  timestamp timestamp,
   user_id int4,
   constraint fk_user foreign key(user_id)
     references users(id)
@@ -130,9 +128,9 @@ CREATE TABLE messages (
 
 TRUNCATE TABLE messages RESTART IDENTITY;
 
-INSERT INTO messages ("content", "user_id") VALUES
-('My first peep', 1),
-('Ed balls', 2);
+INSERT INTO messages ("content", "timestamp", "user_id") VALUES
+('My first peep', '2023-03-29 10:35:20+00', 1),
+( 'Ed balls', CURRENT_TIMESTAMP, 2);
 
 ```
 
