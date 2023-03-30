@@ -13,3 +13,7 @@ group :development, :test do
 end
 
 gem "pg", "~> 1.4"
+
+gem 'rake'
+gem 'sqlite3'
+gem 'activerecord'
