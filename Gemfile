@@ -15,5 +15,7 @@ end
 gem "pg", "~> 1.4"
 
 gem 'rake'
-gem 'sqlite3'
 gem 'activerecord'
+gem "sinatra" # self-explanatory
+gem "sinatra-activerecord" # so it works with Sinatra
+gem "bcrypt" # password encryption
