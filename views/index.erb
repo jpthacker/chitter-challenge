@@ -1,0 +1,17 @@
+<html>
+  <header></header>
+  <body>
+    <h1>Chitter</h1>
+    <h2>Peeps</h2>
+    <% @posts.each do |post| %>
+      <div>
+        <p>"<%= post.text %>"<p>
+          <p>
+          <%= @users.select {|user| user.id == post.user_id}.first.real_name %>
+          (<%= @users.select {|user| user.id == post.user_id}.first.username %>)
+          </p>
+      </div>
+      <hr />
+    <% end %>
+  </body>
+</html>

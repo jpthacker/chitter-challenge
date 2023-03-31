@@ -8,6 +8,10 @@ RSpec.describe User do
     expect(users.size).to eq 1
     user = User.new('email': 'john@makers.com', 'password_digest': 'Blackwillow123', 'real_name': "John Doe", 'username': "jondo")
     user.save
+    post = Post.new("text": 'My first peep', "user_id": 1)
+    post.save
+    post = Post.new("text": 'Ed Balls', "user_id": 2)
+    post.save
     expect(users.size).to eq 2
     expect(users.first.email).to eq 'jack@makers.com'
     expect(users.first.password_digest).to eq 'Swordfish69'

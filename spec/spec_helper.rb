@@ -19,7 +19,7 @@ require "capybara"
 require "capybara/rspec"
 
 # tells Capybara what the app is for the feature tests
-Capybara.app = Chitter
+Capybara.app = Application
 
 DatabaseCleaner.strategy = :truncation
 

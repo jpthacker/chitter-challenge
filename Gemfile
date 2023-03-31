@@ -15,7 +15,7 @@ group :development, :test do
 end
 
 gem "pg", "~> 1.4"
-
+gem 'puma'
 gem 'rake'
 gem 'activerecord'
 gem "sinatra" # self-explanatory
