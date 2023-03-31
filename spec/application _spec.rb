@@ -38,4 +38,15 @@ describe Application do
       expect(res.body).to include('thackattacc')
     end
   end
+
+  context "GET /sign-up" do
+    it "provides forms for user to sign up with" do
+      res = Rack::MockRequest.new(app).get("/sign-up")
+      expect(res.status).to eq 200
+      expect(res.body).to include('<html>')
+      expect(res.body).to include('<body>')
+      expect(res.body).to include('<form>')
+      expect(res.body).to include('<body>')
+    end
+  end
 end

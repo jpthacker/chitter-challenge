@@ -7,8 +7,8 @@
       <div>
         <p>"<%= post.text %>"<p>
           <p>
-          <%= @users.select {|user| user.id == post.user_id}.first.real_name %>
-          (<%= @users.select {|user| user.id == post.user_id}.first.username %>)
+          <%= User.where("id": post.user_id).first.real_name %>
+          (<%= User.where("id": post.user_id).first.username %>)
           </p>
       </div>
       <hr />
