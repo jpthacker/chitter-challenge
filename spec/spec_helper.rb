@@ -1,5 +1,6 @@
 require 'simplecov'
 require 'simplecov-console'
+require 'database_cleaner/active_record'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
@@ -20,7 +21,14 @@ require "capybara/rspec"
 # tells Capybara what the app is for the feature tests
 Capybara.app = Chitter
 
+DatabaseCleaner.strategy = :truncation
+
 RSpec.configure do |config|
+
+  config.before(:each) do
+    DatabaseCleaner.clean
+  end
+
   config.after(:suite) do
     puts
     puts "\e[33mHave you considered running rubocop? It will help you improve your code!\e[0m"
