@@ -16,4 +16,15 @@ class Application < Sinatra::Base
   get "/sign-up" do
     erb(:sign_up)
   end
+
+  post "/users" do
+    encrypted_password = BCrypt::Password.create(params["password"])
+    user = User.new(
+      "email": params["email"],
+      "password_digest": encrypted_password,
+      "real_name": params["real_name"],
+      "username": params["username"]
+    )
+    user.save
+  end
 end
